@@ -2,7 +2,7 @@ import React from 'react';
 import s from './StatItem.module.css';
 
 export default function StatItem({ options }) {
-  console.log(options);
+  //   console.log(options);
   return (
     <>
       {options.map((item, index) => (
