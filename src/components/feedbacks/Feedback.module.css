@@ -1,2 +1,8 @@
-.feedbackItem {
+.feedbackButtons {
+  font-weight: 700;
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 10px;
 }

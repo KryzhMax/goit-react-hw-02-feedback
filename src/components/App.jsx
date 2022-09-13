@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 import s from './feedbackList.module.css';
 import { Feedback } from './feedbacks/Feedback';
-import StatItem from './stats/StatItem';
+import Statistics from './stats/Statistics';
+import Section from './section/Section';
 
 class App extends Component {
   state = {
@@ -26,28 +26,33 @@ class App extends Component {
 
   countPositiveFeedbackPercentage = () => {
     const { good } = this.state;
-    return (good / this.countTotalFeedback()) * 100;
+    return Number(good / this.countTotalFeedback()) * 100;
   };
 
   render() {
     // console.log(Object.values(this.state));
-    // const ArrOfFeedbacks = Object.values(this.state);
-    this.countTotalFeedback();
-    this.countPositiveFeedbackPercentage();
+    const total = this.countTotalFeedback();
+    const positive = this.countPositiveFeedbackPercentage();
     return (
-      <div className={s.app}>
-        <h1>Please leave feedback</h1>
-        <div className={s.buttonWrapper}>
+      <>
+        <Section title="Please leave feedback">
           <Feedback
             options={Object.keys(this.state)}
             onClick={this.handleClick}
           />
-        </div>
-        <h2>Statistics</h2>
-        <ul className={s.feedbackList}>
-          <StatItem options={Object.entries(this.state)} />
-        </ul>
-      </div>
+        </Section>
+        <Section title="Statistics">
+          {total ? (
+            <Statistics
+              options={Object.entries(this.state)}
+              total={total}
+              positivePercentage={positive}
+            />
+          ) : (
+            <span className={s.feedbackAbsence}>No feedback given</span>
+          )}
+        </Section>
+      </>
     );
   }
 }

@@ -1,8 +1,7 @@
-.app {
-  padding: 30px;
-}
-.buttonWrapper {
+.feedbackAbsence {
+  font-weight: 700;
 }
 
-.feedbackList {
-}
+/* .feedbackList {
+  list-style: none;
+} */
