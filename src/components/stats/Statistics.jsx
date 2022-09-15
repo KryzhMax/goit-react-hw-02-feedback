@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import s from './Statistics.module.css';
 
 export default function Statistics({ options, total, positivePercentage }) {
-  console.log(options);
-  console.log(positivePercentage);
+  // console.log(options);
+  // console.log(positivePercentage);
   return (
     <ul className={s.feedbackList}>
       {options.map((item, index) => (
